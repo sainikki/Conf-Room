@@ -1,0 +1,21 @@
+
+<button (click)="notify()">Show Notiication</button>
+
+
+
+<div class="column1">
+  <h2 class="text">View Meeting  Details</h2>
+  <form>
+  <ul *ngFor ="let event of events let i = index">
+    <li> <label>Location :  </label>{{event.location}}
+      |||||||||||
+      <label>End time: </label>{{event.end_time}}
+
+      
+
+    </li>
+   
+  </ul>
+  </form>
+</div>
+
