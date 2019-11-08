@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,27 +16,33 @@ import { NotificationComponent } from './notification/notification.component';
 import { KioskComponent } from './kiosk/kiosk.component';
 import { ConfroomComponent } from './confroom/confroom.component';
 import { EventService } from './event.service';
+import {MatListModule} from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
+
+
+
 
 
 
 const appRoutes: Routes = [ {
   path: '',                     //default component to display
-   component: KioskComponent
- },     
+   component: ConfroomComponent
+ },
 
 {
  path: 'notification',                     //default component to display
  component: NotificationComponent
-},     
+},
 {
   path: 'kiosk',                     //default component to display
   component: KioskComponent
- },    
- 
+ },
+
  {
   path: 'confroom',                     //default component to display
   component: ConfroomComponent
- },    
+ },
 
 ];
 
@@ -67,7 +72,11 @@ const appRoutes: Routes = [ {
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    RouterModule.forRoot(appRoutes),PushNotificationsModule
+    HttpClientModule,
+    MatListModule,
+    MatTableModule,
+    MatCardModule,
+    RouterModule.forRoot(appRoutes),PushNotificationsModule,
   ],
   providers: [EventService],
   bootstrap: [AppComponent]

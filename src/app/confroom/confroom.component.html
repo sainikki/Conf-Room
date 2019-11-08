@@ -1,9 +1,9 @@
-
+<!--
   <body>
     <p>Booking Form</p>
 <table cellpadding="5" cellspacing="10" width="100%" border="1" style="border-collapse: inherit">
   <td width ="50%" align="left">
-  
+
     <form #booking_form="ngForm" (ngSubmit)="onSubmit()">
     {{ booking_form.value | json}}
       <br>
@@ -73,7 +73,7 @@
             <option value=09>9</option>
             <option value=10>10</option>
             <option value=11>11</option>
-            <option value=12>12</option>  
+            <option value=12>12</option>
             </select>
             <select type="number" id ="start_minute" name ="start_minute" required ngModel>
               <option value=00>00</option>
@@ -98,7 +98,7 @@
                 <option value=09>9</option>
                 <option value=10>10</option>
                 <option value=11>11</option>
-                <option value=12>12</option>  
+                <option value=12>12</option>
                 </select>
                 <select type="number" id ="end_minute" name ="end_minute" required ngModel>
                   <option value=00>00</option>
@@ -122,4 +122,63 @@
     </form>
   </td>
 </table>
+</body> -->
+
+<body>
+  <p>Enter your meeting details:</p>
+  <br>
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <mat-form-field>
+      <mat-label>Preferred Location</mat-label>
+      <select matNativeControl [(ngModel)]="location" name="location" required>
+        <option value="Room A">Room A</option>
+        <option value="Room B">Room B</option>
+        <option value="Room C">Room C</option>
+        <option value="Room D">Room D</option>
+      </select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input mat-timepicker matInput type="time" placeholder="Start Time" [(ngModel)]="start_time" [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input mat-timepicker matInput type="time" placeholder="End Time" [(ngModel)]="end_time" [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="In-Person Attendees #" [(ngModel)]="no_attendees" name="no_attendees" required>
+    </mat-form-field>
+    <br>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  </form>
+  <br>
+  <mat-card>{{text}}</mat-card>
+  <br>
+  Recommended Rooms:
+  <br>
+  <br>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="room">
+      <th mat-header-cell *matHeaderCellDef> Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.room}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="capacity">
+      <th mat-header-cell *matHeaderCellDef> Capacity </th>
+      <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
 </body>

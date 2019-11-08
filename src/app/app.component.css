@@ -13,7 +13,7 @@
   float: left;
   width: 20%;
   padding: 10px;
-  height: 250px; 
+  height: 250px;
   text-align: left;
   background-image: url(../assets/img/SHAW_CRP_LOGO_1.png);
   background-color:black;
@@ -23,7 +23,7 @@
   float: left;
   width: 75%;
   padding: 10px;
-  height: 250px; 
+  height: 250px;
   text-align: right;
   background-position: center;
   background-image: url(../assets/img/image1.png_525981578.png);
@@ -33,7 +33,7 @@
   width: 30%;
   display: table;
   clear: both;
-  
+
 }
 .row1 {
 
@@ -73,9 +73,9 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-  'header header header header header header'
-  'main main main main main main'
-  'footer footer footer footer footer footer';
+  'header'
+  'main'
+  'footer';
   grid-gap: 1px;
   background-color:whitesmoke;
     padding: 2px;
@@ -157,4 +157,3 @@ a:hover,
 a:active {
 	color: rgb(97, 12, 12);
 }
-

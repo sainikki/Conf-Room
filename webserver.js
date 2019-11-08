@@ -1,5 +1,11 @@
+
+
 //add express middleware
 const app = require('./serverside/app');
+
+const cors = require('cors')
+
+app.use(cors()) // Use this after the variable declaration
 
 // webserver.js
 //load module http

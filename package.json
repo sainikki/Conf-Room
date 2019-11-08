@@ -23,6 +23,8 @@
     "@angular/router": "~7.2.0",
     "@material/toolbar": "^1.1.0",
     "core-js": "^2.5.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "material-design-icons": "^3.0.1",
     "mongoose": "^5.4.19",
     "ng-push": "^0.2.2",
