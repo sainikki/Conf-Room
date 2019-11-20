@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { PushNotificationsService} from 'ng-push';
 import { EventService } from '../event.service'; 
-import { ResourceLoader } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-notification',
@@ -15,55 +15,39 @@ export class NotificationComponent   {
   //initialize the call using eventService
   
 constructor(public _myService: EventService  ,public __myService:PushNotificationsService) {
-
-  // this.getEvents();
-
- 
    }
 
    ngOnInit() {
-   
-
-
     setTimeout(() => {
       window.location.reload();
-    }, 9000); 
+    }, 30000); //Page reloads for every 30 seconds 
     this.getEvents();
   }
    
   getEvents(){
-    var ids = [];
-console.log("in events");
-
-  this._myService.getevent().subscribe(
-    
+ 
+console.log("Notification process starts");
+  this._myService.getevent().subscribe(  
      data=> {
-      this.events = data;//as string [];	 // FILL THE ARRAY WITH DATA.
-
-  
-  var sdate = new Date(this.events[0].startdate);
+      this.events = data;
 const edate= new Date(this.events[0].enddate);
-console.log(sdate);
-console.log(edate);
+var Endtimediff=edate.setMinutes( edate.getMinutes() - 10 );
+var Endtime2= new Date(Endtimediff)
+var MeetingEndTime =  Endtime2.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
+console.log("Meeting End Time"+" "+MeetingEndTime);
 
-var dt = new Date(edate);
+var Today = new Date();
+var TodayTime= Today.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
+console.log( "Today Time"+" "+TodayTime);
 
-var dt2=dt.setMinutes( dt.getMinutes() - 10 );
+//Testing - Replace MeetingEndTime with TestTime in the if condition
+var td2= new Date("2019-11-19T21:03:00-05:00");
+var TestTime = td2.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
+console.log("Test Time"+" " +TestTime );
 
-console.log(dt2);
-
-const expirytime = new Date(dt2);
-var today = new Date();
-console.log(today);
-console.log(expirytime);
-
-var td2= new Date("2019-11-19T19:16:20-05:00");
-
-console.log(td2);
-
-if (today <= td2)
+if (TodayTime === MeetingEndTime)
 {
-  console.log("in if");
+  console.log("Checking for notification");
     let options = { //set options
       body: "Meeting ends at... "+edate.toLocaleString(),
                       icon: "assets/img/ntfy.jpg" ,//adding an icon                                       
@@ -73,98 +57,16 @@ if (today <= td2)
         res => console.log(res),
         err => console.log(err)
     );
-
-
 }
 else{
-  // console.log("in else");
+   console.log("Notification is not displayed");
 }
-
- 
+console.log("Notification process ends");
 
     },
-  );
-}
-
-  }
-  
-
-//   self.addEventListener('push', event => {
-//     let data = event.data.json();
-//     let title = '', args = {};
-
-//     title = 'Notification!!';
-//     args = { 'body': 'Hello hello',
-//              'icon': '/static/icon64.png',
-//              'tag': 'some-tag' };
-
-//     event.waitUntil(self.registration.showNotification(title, args));
-// });
-  
-  
-  // this.__myService.requestPermission();
-
-
-  // var a = 7;
     
-  //         this.interval = setInterval(() => {
-  //           console.log(a++)
-  //           this.date =  new Date().toLocaleTimeString();
-  //           if(a > 5)
-  //           {
-  //             let options = { //set options
-  //                        body: "Meeting ends at... "+this.date,
-  //                         icon: "assets/images/ntfy.jpg" ,//adding an icon                                       
-  //                         requireInteraction:true                 
-  //                        }               
-  //                       this.__myService.create('Meeting', options).subscribe( //creates a notification
-  //                         (                     res: any) => console.log(res),
-  //                         (                      err: any) => console.log(err)
-  //                       );
-  //                       console.log("notification displayed");  
-  //                       console.log(a);     
-  //                        clearInterval(this.interval);
-  //           }
-  //         }, 1000);
-
-  //}
-//     this.__myService.requestPermission();
-//    
-      
-
-//   }
-
-
-
-// }
-
-
-
-
-
-
-// // constructor( private _pushNotifications: PushNotificationsService ) {
-// //   this._pushNotifications.requestPermission();
-// //   var a = 1;
+  );
   
-// //   this.interval = setInterval(() => {
-// //     console.log(a++)
-// //     this.date =  new Date().toLocaleTimeString();
-// //     if(a > 5)
-// //     {
-// //       let options = { //set options
-// //                  body: "Meeting ends at... "+this.date,
-// //                   icon: "assets/images/ntfy.jpg" ,//adding an icon                                       
-// //                   requireInteraction:true                 
-// //                  }               
-// //                 this._pushNotifications.create('Meeting', options).subscribe( //creates a notification
-// //                   (                     res: any) => console.log(res),
-// //                   (                      err: any) => console.log(err)
-// //                 );
-// //                 console.log("notification displayed");  
-// //                 console.log(a);     
-// //                  clearInterval(this.interval);
-//     }
-//    }, 1000);
-// }
-  //}
+}
+}
+  
