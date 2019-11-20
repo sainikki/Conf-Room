@@ -20,7 +20,11 @@ import {MatListModule} from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 
-
+import { ScheduleComponent } from './kiosk/schedule/schedule.component';
+import { ProcessingTimerComponent } from './kiosk/processing-timer/processing-timer.component';
+import { DetailsService } from './kiosk/schedule/DetailsService';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { GridModule } from '@syncfusion/ej2-angular-grids';
 
 
 
@@ -55,6 +59,9 @@ const appRoutes: Routes = [ {
     NotificationComponent,
     KioskComponent,
     ConfroomComponent,
+    ScheduleComponent,
+    ProcessingTimerComponent,
+    
     ],
   imports: [
     BrowserModule,
@@ -77,8 +84,19 @@ const appRoutes: Routes = [ {
     MatTableModule,
     MatCardModule,
     RouterModule.forRoot(appRoutes),PushNotificationsModule,
+    GridModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 10000000,
+      
+    })
   ],
-  providers: [EventService],
+  providers: [EventService,DetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
