@@ -5,7 +5,9 @@ const mongoose = require('mongoose');
    // id:{type:int,required:true},
   //  location:  { type: String, required: true},
    location : { type: String, required: false},
-   end_time: { type: String, required: false}
+   end_time: { type: String, required: false},
+   startdate: {type: Date,required:false},
+   enddate: {type: Date,required:false}
   });
 
 //use the blueprint to create the model 
