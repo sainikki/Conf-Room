@@ -27,8 +27,6 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
 
 
-
-
 const appRoutes: Routes = [ {
   path: '',                     //default component to display
    component: ConfroomComponent
