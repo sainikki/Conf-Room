@@ -7,8 +7,14 @@ const mongoose = require('mongoose');
    location : { type: String, required: false},
    end_time: { type: String, required: false},
    startdate: {type: Date,required:false},
-   enddate: {type: Date,required:false}
-  });
+   enddate: {type: Date,required:false},
+  
+   summary:  { type: String, required: true},
+   start_time:  { type: String, required: false},
+
+ });
+
+
 
 //use the blueprint to create the model 
 // Parameters: (model_name, schema_to_use, collection_name)
