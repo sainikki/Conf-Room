@@ -30,4 +30,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-1. npm install 
+1. Once the code is downloaded run the command "npm install" to install all the dependency packages for this code base. 
