@@ -9,7 +9,7 @@ import { DetailsService } from './DetailsService';
 })
 export class ScheduleComponent implements OnInit {
     RoomNo = 'projectX';
-  
+    roomSelected: any;
     public Details;
     //initialize the call using StudentService 
     constructor(private _myService: DetailsService) { }
@@ -17,8 +17,28 @@ export class ScheduleComponent implements OnInit {
       this.getDetails();
    
     }
-    roomSelected: any;
-    // formatSubtitle = (percent: number) : string => {
+ 
+    getUniqueLocation(detail){
+      const locations = []
+      for (var i in detail){
+          locations.push(detail[i].location);
+      }
+      return new Set(locations)
+    }
+
+    getDetails() {
+     this._myService.getDetails().subscribe(
+        //read data and assign to public variable students
+        data => { this.Details = this.getUniqueLocation(data);
+        
+        },
+        err => console.error(err),
+        () => console.log('finished loading')
+      );
+    }
+  }
+  
+   // formatSubtitle = (percent: number) : string => {
     //   if(percent >= 100){
     //     return "Congratulations!"
     //   }else if(percent >= 50){
@@ -36,24 +56,3 @@ export class ScheduleComponent implements OnInit {
     //       return el.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     //   })
     // }
-    getUniqueLocation(detail){
-      const locations = []
-      for (var i in detail){
-          locations.push(detail[i].location);
-          this.roomSelected=i;
-      }
-      return new Set(locations)
-    }
-
-    getDetails() {
-     this._myService.getDetails().subscribe(
-        //read data and assign to public variable students
-        data => { this.Details = this.getUniqueLocation(data);
-        
-        },
-        err => console.error(err),
-        () => console.log('finished loading')
-      );
-    }
-  }
-  
