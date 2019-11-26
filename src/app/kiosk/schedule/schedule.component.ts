@@ -9,19 +9,33 @@ import { DetailsService } from './DetailsService';
 })
 export class ScheduleComponent implements OnInit {
     RoomNo = 'projectX';
-    roomSelected: any;
+     public roomSelected = []
+    Room:any
     public Details;
     //initialize the call using StudentService 
     constructor(private _myService: DetailsService) { }
     ngOnInit() {
-      this.getDetails();
-   
+      this.getDetails();   
+      //this.getdetailslist();
     }
  
+    // getdetailslist()
+    // { var j=0
+   
+    //   for(var i in this.Details){
+    //     j++
+    //   if (this.Details[i].location==this.Room)
+    //   {
+    //     this.roomSelected.push(j);
+    //   }
+    //   }
+
+    // }
+
     getUniqueLocation(detail){
       const locations = []
       for (var i in detail){
-          locations.push(detail[i].location);
+          locations.push(detail[i].location); 
       }
       return new Set(locations)
     }
