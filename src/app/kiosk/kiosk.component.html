@@ -25,34 +25,36 @@
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <body>
-<p>
-<!-- <br> -->
-<img src="\assets\shaws.gif" style="width:320px;height:93px;">
-</p>
+    <div>
+        <!-- <br> -->
+        <img src="\assets\shaws.gif" style="width:320px;height:93px;">
+    </div>
 
 <div align="center"  >
 <!-- <h1 >{{Details && Details[0]?.location}}</h1> -->
 
-<div>
+<!-- <div>
 <label>RoomNo: </label>
 <select [(ngModel)]="roomSelected" >
-<option *ngFor="let x of Details; trackBy:indexTracker"  [value]=[x.summary,x.start_date,x.start_time,x.end_time]>  
+<option *ngFor="let x of Details let i = index "  [value]=i>  
 
 {{x.location}}
 </option> 
 
 </select>   
 <br> 
-{{indexTracker(roomSelected,x)}}
+{{indexTracker(roomSelected,x)}} -->
 
-<!-- <div ng-if="roomSelected">
+ <!-- <div ng-if="roomSelected">
 <h3>{{roomSelected }}</h3>
 
-</div> -->
 </div>
+</div>
+<h3>({{roomSelected}})</h3> 
 
-</div>
+</div> --> 
  
 
 <div class="container">
@@ -63,24 +65,29 @@
   
 
   <div class="floatRight">
-
+    <br><br><br><br>
 <circle-progress
 
 [percent]="100"
-[radius]="250"
-[outerStrokeWidth]="70"
+[radius]="180"
+[outerStrokeWidth]="50"
 [innerStrokeWidth]="30"
 [outerStrokeColor]="'#78C000'"
 [innerStrokeColor]="'#C7E596'"
 [animation]="true"
-[animationDuration]="600"
+[animationDuration]=runtime
 [unitsFontSize]="60"
 [titleFontSize]="80"
-[subtitleFontSize]="80"></circle-progress>
+[subtitleFontSize]="60"
+
+></circle-progress>
   </div>
   </div>
 
-<div align="center" ><app-processing-timer></app-processing-timer></div>
+<div align="center" ><app-progress></app-progress></div>
+
+<!-- <my-processing inputDate="January 1, 2018 12:00:00">Loading...</app-processing> -->
+
 
 <!-- <label *ngFor="let value of Details; trackBy:indexTracker">
   {{value.location}}
