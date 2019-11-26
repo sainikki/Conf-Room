@@ -1,48 +1,75 @@
-<style>
-    input[type=text], select {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    
-    h4 {
-      border-radius: 5px;
-      font-style: bold;
-                  font-size: 25px;
-                  background-color: #e8ff67;
- 
-    }
-    div {
-                  border-radius: 5px;
-                  background-color: #f2f2f2;
-                
-                  font-style: bold;
-                  font-size: 25px;
-                }
-    
 
 
-    </style>
-<!-- <h4>Meeting Details: </h4>
+        <!-- <script>
+        
+        angular.module('ui.filters').filter('unique', function () {
+
+return function (items, filterOn) {
+
+  if (filterOn === false) {
+    return items;
+  }
+
+  if ((filterOn || angular.isUndefined(filterOn)) && angular.isArray(items)) {
+    var hashCheck = {}, newItems = [];
+
+    var extractValueToCompare = function (item) {
+      if (angular.isObject(item) && angular.isString(filterOn)) {
+        return item[filterOn];
+      } else {
+        return item;
+      }
+    };
+
+    angular.forEach(items, function (item) {
+      var valueToCheck, isDuplicate = false;
+
+      for (var i = 0; i < newItems.length; i++) {
+        if (angular.equals(extractValueToCompare(newItems[i]), extractValueToCompare(item))) {
+          isDuplicate = true;
+          break;
+        }
+      }
+      if (!isDuplicate) {
+        newItems.push(item);
+      }
+
+    });
+    items = newItems;
+  }
+  return items;
+};
+});
+
+        </script> -->
+
 <body >
-    <label>
-      <div>Current Meeting Topic:</div>
-      <h4>>>{{Details && Details[4]?.summary}}</h4>         
+<div>
+  <h3>RoomNo: </h3>
+  <select   [(ngModel)]="roomSelected" >
+  <option *ngFor="let x of Details let i = index  "  [value]=i >
+     
+  <h1>{{x}}</h1>
 
-  <div> Current Meeting Time:</div>       
-          
-  <h4>>>{{Details && Details[3]?.start_time}}-{{Details && Details[3]?.end_time}}</h4>
+  </option> 
+  </select>   
+  <br> 
+  </div>
+  
+  <th>{{Details && Details[roomSelected]?.location}}</th>
+    <label>
+      <h5>Meeting Details: </h5>
+      <h4>Current Meeting Topic: {{Details && Details[roomSelected]?.summary}}</h4>         
+  <h4>Current Meeting Time: {{Details && Details[roomSelected]?.start_date}}</h4>        
+  <h4>Start time: {{Details && Details[roomSelected]?.start_time}}</h4>
+  <h4>End time: {{Details && Details[roomSelected]?.end_time}}</h4>
     
-          <div>Upcoming Meeting Topic:</div>
+          <!-- <div>Upcoming Meeting Topic:</div>
           
-          <h4>>>{{Details && Details[4]?.summary}}</h4> 
+          <h4>>>{{Details && Details[roomSelected]?.summary}}</h4> 
     
          <div>Upcoming Meeting Time: </div> 
       
-         <h4>>>{{Details && Details[4]?.start_time}}-{{Details && Details[4]?.end_time}}</h4>
+         <h4>>>{{Details && Details[roomSelected]?.start_time}}-{{Details && Details[roomSelected]?.end_time}}</h4> -->
         </label>
-    </body> -->
+    </body>
