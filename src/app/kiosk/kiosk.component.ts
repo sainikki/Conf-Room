@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { DetailsService } from './schedule/DetailsService';  
 
 @Component({
@@ -17,10 +16,11 @@ export class KioskComponent implements OnInit {
   start_date:  String;
 
  selectedRoom: Location;
- roomSelected: any[];
+ roomSelected: any;
 
   public Details;
 
+  public runtime=10000;
   //initialize the call using StudentService 
   constructor(private _myService: DetailsService) { }
   ngOnInit() {
@@ -35,9 +35,9 @@ export class KioskComponent implements OnInit {
   indexTracker(index: number, value: any) {
     return index;
   }
-  calculate()
+  calculateRunTime(R,T)
   {
-
+this.runtime=R-T;
   }
 
   starter()
