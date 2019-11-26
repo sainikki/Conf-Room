@@ -10,7 +10,7 @@ body {
     height: 67%;
 }
 
-@-webkit-keyframes colorchange {
+/* @-webkit-keyframes colorchange {
     0%  {background: rgb(59, 5, 255);}
    25%  {background: rgb(91, 100, 233);}
    50%  {background: rgb(122, 17, 17);}
@@ -23,7 +23,7 @@ body {
     50%  {background: rgb(122, 17, 17);}
     75%  {background: rgb(41, 84, 224);}
     100% {background: rgb(68, 110, 248);}
-}
-.floatLeft { width: 35%; float: left; }
-.floatRight {width: 100%; float: right; }
+} */
+.floatLeft { width: 30%; float: left; }
+.floatRight {width: 65%; float: right; }
 .container { overflow: hidden; }
