@@ -25,6 +25,7 @@ import { ProgressComponent } from './kiosk/progress/progress.component';
 import { DetailsService } from './kiosk/schedule/DetailsService';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { CircleComponent } from './kiosk/circle/circle.component';
 
 
 const appRoutes: Routes = [ {
@@ -58,7 +59,8 @@ const appRoutes: Routes = [ {
     KioskComponent,
     ConfroomComponent,
     ScheduleComponent,
-    ProgressComponent
+    ProgressComponent,
+    CircleComponent
    
 
     ],
