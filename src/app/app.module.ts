@@ -21,10 +21,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 
 import { ScheduleComponent } from './kiosk/schedule/schedule.component';
-import { ProcessingTimerComponent } from './kiosk/processing-timer/processing-timer.component';
+import { ProgressComponent } from './kiosk/progress/progress.component';
 import { DetailsService } from './kiosk/schedule/DetailsService';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { CircleComponent } from './kiosk/circle/circle.component';
 
 
 const appRoutes: Routes = [ {
@@ -58,8 +59,10 @@ const appRoutes: Routes = [ {
     KioskComponent,
     ConfroomComponent,
     ScheduleComponent,
-    ProcessingTimerComponent,
-    
+    ProgressComponent,
+    CircleComponent
+   
+
     ],
   imports: [
     BrowserModule,
@@ -91,10 +94,11 @@ const appRoutes: Routes = [ {
       outerStrokeColor: "#78C000",
       innerStrokeColor: "#C7E596",
       animationDuration: 10000000,
-      
+    
     })
   ],
   providers: [EventService,DetailsService],
+  // providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 // import { Booking } from '../booking';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { EventService } from '../event.service'
 
 
 
@@ -22,19 +23,37 @@ export class ConfroomComponent implements OnInit {
   public recommendation;
   public input;
   dataSource;
+  events;
   displayedColumns: string[] = ['room', 'capacity'];
-
 
 
   onSubmit() {
     // console.log(this.bookingModel);
     this.myFunction();
   }
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private _myService: EventService) {
   }
 
   ngOnInit() {
+    this.getEvents()
   }
+
+  getEvents() {
+    this._myService.getevent().subscribe(
+      //read data and assign to public variable students
+      data => { this.events = this.getUniqueLocation(data)},
+      err => console.error(err),
+      () => console.log ('Locations fetched')
+    );
+  }
+
+  getUniqueLocation(event){
+      const locations = []
+      for (var i in event){
+          locations.push(event[i].location);
+      }
+      return new Set(locations)
+    }
 
 
   myFunction2(arg) {
@@ -52,7 +71,6 @@ export class ConfroomComponent implements OnInit {
     this.httpClient.post('http://localhost:5000/result', { 'text': this.input }).subscribe((responseData) => {
       this.myFunction2(responseData);
     });
-    // this.myFunction2()
   }
 
 }
