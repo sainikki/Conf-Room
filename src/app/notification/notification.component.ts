@@ -40,16 +40,18 @@ var Today = new Date();
 var TodayTime= Today.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
 console.log( "Today Time"+" "+TodayTime);
 
-//Testing - Replace MeetingEndTime with TestTime in the if condition
-var td2= new Date("2019-11-19T21:03:00-05:00");
+//Testing - Replace MeetingEndTime with TestTime in the if condition and change the value of td2 to the test value 
+var td2= new Date("2019-11-19T19:41:00-05:00");
 var TestTime = td2.toLocaleTimeString().replace(/(.*)\D\d+/, '$1');
-console.log("Test Time"+" " +TestTime );
+console.log("Meeting Time"+" " +TestTime );
 
-if (TodayTime === MeetingEndTime)
+var Etime=td2.setMinutes( td2.getMinutes() + 10 );
+var etime2= new Date(Etime);
+if (TodayTime === TestTime)
 {
   console.log("Checking for notification");
     let options = { //set options
-      body: "Meeting ends at... "+edate.toLocaleString(),
+      body: "Meeting ends at... "+etime2.toLocaleString(),
                       icon: "assets/img/ntfy.jpg" ,//adding an icon                                       
                            requireInteraction:true               
     }
